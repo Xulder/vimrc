@@ -16,7 +16,7 @@ let base16colorspace=256
 " This has to happen before colorscheme is called.
 augroup qs_colors
     autocmd!
-    autocmd ColorScheme * highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+    autocmd ColorScheme * highlight QuickScopePrimary guifg='#ff0400' gui=underline ctermfg=155 cterm=underline
     autocmd ColorScheme * highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
 augroup end
 " colorscheme base16-google-dark
@@ -28,6 +28,7 @@ colorscheme base16-phd
 hi Normal guibg=NONE ctermbg=NONE
 hi clear CursorLine
 hi CursorLine gui=underline cterm=underline
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " => General
@@ -36,7 +37,7 @@ set lazyredraw
 set ttyfast                                                   " Speed up scrolling in Vim
 " set exrc                                                    " Run project specific .nvimrc files
 " set secure                                                  " Diasble unsafe commands in project specific nvimrc files
-set timeoutlen=500                                            " Shorten timeout length for multikey commands
+set timeoutlen=700                                            " Shorten timeout length for multikey commands
 set clipboard+=unnamedplus                                    " Using system clipboard
 set encoding=utf-8
 
@@ -110,10 +111,17 @@ noremap c "_c
 map j gj
 map k gk
 " Replace ex mode with gq
+" Buffer next/prev shortcut
+map <C-k> :bn<CR>
+map <C-j> :bp<CR>
 map Q gq
 " EasyAlign
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+" GitGutter
+nmap ghs <Plug>(GitGutterStageHunk)
+nmap ghu <Plug>(GitGutterUndoHunk)
+nmap ghp <Plug>(GitGutterPreviewHunk)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -131,9 +139,11 @@ autocmd BufWritePost Xresources,Xdefaults,xresources,xdefaults !xrdb %
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 " Disable autopairs by default because it can be fucking obnoxious
 autocmd VimEnter,BufWinEnter * silent! call AutoPairsToggle()
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" => Macros
+" Saves folds
+augroup remember_folds
+  autocmd!
+  autocmd BufWinLeave ?* mkview
+  autocmd BufWinEnter ?* silent! loadview
+augroup end
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

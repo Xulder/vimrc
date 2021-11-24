@@ -26,14 +26,14 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-obsession'
 Plug 'preservim/nerdtree'
 Plug 'preservim/tagbar'
-Plug 'xolox/vim-easytags'
-Plug 'xolox/vim-misc'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'junegunn/fzf', { 'do': { -> 'yes\| ./install' } }
 Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'airblade/vim-gitgutter'
+" Plug 'voldikss/vim-floaterm', { 'on': ['FloatermNew', 'FloatermNew!', 'FloatermToggle', 'FloatermToggle!'] }
 " Text modification and motions
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'

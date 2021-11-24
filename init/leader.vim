@@ -6,48 +6,73 @@
 let mapleader=" " " Set the leader key to space
 let maplocalleader=","
 " Toggle search highlighting
-:nnoremap <silent><expr> <leader>nh (&hls && v:hlsearch ? ':nohls' : ':set hls')."\n"
-" Toggle line numbers
-" map <leader>n :set nonumber!<CR>
-" map <leader>r :set norelativenumber!<CR>
-" nnoremap <leader>n :NumbersToggle<CR>
-" nnoremap <leader>r :NumbersOnOff<CR>
-" nnoremap <leader>n :call ToggleLineNumber()<CR>
-" Toggle Paste
-" map <leader>p :set nopaste!<CR>
+nnoremap <silent><expr> <leader>th (&hls && v:hlsearch ? ':nohls' : ':set hls')."\n"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " => Spell checking
 " Pressing <space>ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<CR>
+nnoremap <leader>ss :setlocal spell!<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " => Shortcuts
-" NOTE: Organize this like above
-" WhichKey
-nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
-" Window navigation
-noremap <leader>wh <C-w>h
-nnoremap <leader>wj <C-w>j
-nnoremap <leader>wk <C-w>k
-nnoremap <leader>wl <C-w>l
-nnoremap <leader>ww <C-w>w
-nnoremap <leader>wq <C-w>wq
-" Window resizing (move these to leader.vim)
-nnoremap <leader>wK :<C-U>exe "res -" . v:count1<CR>
-nnoremap <leader>wJ :<C-U>exe "res +" . v:count1<CR>
-nnoremap <leader>wH :<C-U>exe "vertical res -" . v:count1<CR>
-nnoremap <leader>wL :<C-U>exe "vertical res +" . v:count1<CR>
 " Nerdtree
-map <leader>t :NERDTreeToggle<CR>
-
-" Buffer navigation
-map <leader>bp :bp<CR>
-map <leader>bn :bn<CR>
-map <leader>bd :bp<bar>bd#<CR>
+map <leader>n :NERDTreeToggle<CR>
+map <leader>nf :NERDTreeFocus<CR>
 " Tagbar
 map <leader>ta :TagbarToggle<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" => Windows
+" Navigation
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
+" Resizing
+nnoremap <leader>K <C-w>5-
+nnoremap <leader>J <C-w>5+
+nnoremap <leader>H <C-w>5<
+nnoremap <leader>L <C-w>5>
+nnoremap <leader>= <C-w>=
+" Movement
+nnoremap <leader>wr <C-w>r
+nnoremap <leader>wR <C-w>R
+nnoremap <leader>wx <C-w>x
+" Creation/deletion
+nnoremap <leader>wq <C-w>q
+nnoremap <leader>ws <C-w>s
+nnoremap <leader>wv <C-w>v
+" select from list of buffers to make vert or horz split
+nnoremap <leader>wb :ls<CR>:sbuffer<space>
+nnoremap <leader>wbv :ls<CR>:vertical sbuffer<space>
+" window with blank buffer
+nnoremap <leader>wn :new<CR>
+nnoremap <leader>wnv :vnew<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" => Buffers
+" edit new blank buffer
+nnoremap <leader>bn :enew<CR>
+" delete current buffer without deleting the window
+nnoremap <leader>bd :bp<bar>bd#<CR>
+" display list of buffers to select from by number or name (delete '#' and enter buffer name)
+nnoremap <leader>bg :ls<CR>:buffer<space>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" => Folding
+nnoremap <leader>tf :call FoldColumnToggle()<CR>
+function! FoldColumnToggle()
+    if &foldcolumn
+        setlocal foldcolumn=0
+    else
+        setlocal foldcolumn=4
+    endif
+endfunction
+nnoremap <leader>f zfip
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

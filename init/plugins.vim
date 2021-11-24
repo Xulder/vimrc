@@ -41,25 +41,6 @@ let g:syntastic_check_on_wq = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" => WhichKey
-let g:which_key_map = {}
-" Toggling
-
-" Windows
-let g:which_key_map['w'] = {
-            \ 'name' : '+windows',
-            \ 'w' : ['<C-w>w'    , 'other-window'],
-            \ 'h' : ['<C-w>h'    , 'window-left'],
-            \ 'j' : ['<C-w>j'    , 'window-below'],
-            \ 'k' : ['<C-w>k'    , 'window-above'],
-            \ 'l' : ['<C-w>l'    , 'window-right'],
-            \ }
-" TODO: Keep filling this out for whatever reason.
-" TODO: Work on your fucking project and resume you moron.
-call which_key#register('<Space>', "g:which_key_map")
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " => Quickscope
 " Trigger a highlight in the appropriate direction when pressing these keys:
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
