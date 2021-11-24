@@ -1,5 +1,6 @@
 " $XDG_CONFIG_HOME/nvim/init/plug.vim
 
+" => Autoplugins
 if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
 	echo "Downloading junegunn/vim-plug to manage plugins..."
 	silent !mkdir -p ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/
@@ -7,21 +8,23 @@ if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autolo
 	autocmd VimEnter * PlugInstall
 endif
 
-
+" => Plug
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
-" Wiki/Prose
+
+" => Wiki/Prose
 Plug 'vimwiki/vimwiki'
 Plug 'junegunn/goyo.vim'
-" Appearance
+
+" => Appearance
 Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" QOL improvments
+
+" => QOL improvments
 Plug 'unblevable/quick-scope'
-Plug 'liuchengxu/vim-which-key'
-" , { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'junegunn/vim-peekaboo'
-" Worflow/project managment
+
+" => Worflow/project managment
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-obsession'
 Plug 'preservim/nerdtree'
@@ -33,17 +36,20 @@ Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'airblade/vim-gitgutter'
-" Plug 'voldikss/vim-floaterm', { 'on': ['FloatermNew', 'FloatermNew!', 'FloatermToggle', 'FloatermToggle!'] }
-" Text modification and motions
+Plug 'voldikss/vim-floaterm', { 'on': ['FloatermNew', 'FloatermNew!', 'FloatermToggle', 'FloatermToggle!'] }
+
+" => Text modification and motions
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/vim-easy-align'
 Plug 'justinmk/vim-sneak'
 Plug 'jiangmiao/auto-pairs'
-" Autocompletion, linting, syntax, and code snippits
+
+" => Autocompletion, linting, syntax, and code snippits
 Plug 'ap/vim-css-color'
 Plug 'vim-syntastic/syntastic'
 Plug 'sheerun/vim-polyglot'
 Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 call plug#end()

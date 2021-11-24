@@ -37,7 +37,7 @@ set lazyredraw
 set ttyfast                                                   " Speed up scrolling in Vim
 " set exrc                                                    " Run project specific .nvimrc files
 " set secure                                                  " Diasble unsafe commands in project specific nvimrc files
-set timeoutlen=700                                            " Shorten timeout length for multikey commands
+set timeoutlen=500                                            " Shorten timeout length for multikey commands
 set clipboard+=unnamedplus                                    " Using system clipboard
 set encoding=utf-8
 
@@ -103,6 +103,8 @@ set incsearch  " Searches for strings incrementally
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " => Mappings
+" Kill all float terminals when saving and quitting
+cnoremap wq silent! FloatermKill!<CR>:wq
 " Save file as sudo on files that require root permission
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 " Stops c from clobbering the main register

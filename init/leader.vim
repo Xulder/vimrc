@@ -17,6 +17,16 @@ nnoremap <leader>ss :setlocal spell!<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " => Shortcuts
+" Floaterm
+nnoremap <silent> <localleader>n :FloatermNew<CR>
+tnoremap <silent> <localleader>n <C-\><C-n>:FloatermNew<CR>
+nnoremap <silent> <localleader>t :FloatermToggle<CR>
+tnoremap <silent> <localleader>t <C-\><C-n>:FloatermToggle<CR>
+nnoremap <silent> <localleader>tp :FloatermPrev<CR>
+tnoremap <silent> <localleader>tp <C-\><C-n>:FloatermPrev<CR>
+nnoremap <silent> <localleader>tn :FloatermNext<CR>
+tnoremap <silent> <localleader>tn <C-\><C-n>:FloatermNext<CR>
+tnoremap <silent> <localleader>tq <C-\><C-n>:FloatermKill<CR>:silent! FloatermPrev<CR>
 " Nerdtree
 map <leader>n :NERDTreeToggle<CR>
 map <leader>nf :NERDTreeFocus<CR>
@@ -38,6 +48,10 @@ nnoremap <leader>H <C-w>5<
 nnoremap <leader>L <C-w>5>
 nnoremap <leader>= <C-w>=
 " Movement
+nnoremap <leader>wh <C-w>H
+nnoremap <leader>wj <C-w>J
+nnoremap <leader>wk <C-w>K
+nnoremap <leader>wl <C-w>L
 nnoremap <leader>wr <C-w>r
 nnoremap <leader>wR <C-w>R
 nnoremap <leader>wx <C-w>x
@@ -51,6 +65,9 @@ nnoremap <leader>wbv :ls<CR>:vertical sbuffer<space>
 " window with blank buffer
 nnoremap <leader>wn :new<CR>
 nnoremap <leader>wnv :vnew<CR>
+" open filepath under cursor in new window
+nnoremap <leader>wf <C-w>f
+nnoremap <leader>wfv :vertical wincmd f<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -65,7 +82,7 @@ nnoremap <leader>bg :ls<CR>:buffer<space>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " => Folding
-nnoremap <leader>tf :call FoldColumnToggle()<CR>
+nnoremap <leader>ft :call FoldColumnToggle()<CR>
 function! FoldColumnToggle()
     if &foldcolumn
         setlocal foldcolumn=0
