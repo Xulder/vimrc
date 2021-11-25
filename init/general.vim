@@ -38,6 +38,7 @@ set ttyfast                                                   " Speed up scrolli
 " set exrc                                                    " Run project specific .nvimrc files
 " set secure                                                  " Diasble unsafe commands in project specific nvimrc files
 set timeoutlen=500                                            " Shorten timeout length for multikey commands
+set updatetime=300                                            " For async stuff
 set clipboard+=unnamedplus                                    " Using system clipboard
 set encoding=utf-8
 
@@ -82,10 +83,11 @@ set ai                                          " Auto indent
 set si                                          " Smart indent
 set wrap                                        " Wrap lines
 set linebreak                                   " Break lines at word (requires Wrap lines)
-set showbreak=***                               " Wrap-broken line prefix
+set showbreak=+++                               " Wrap-broken line prefix
 set textwidth=80                                " Line wrap (number of cols)
 set nolist
 set splitbelow splitright                       " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
+" set signcolumn=number
 " set foldcolumn=5
 " Messes with transparency so disabled until I find a fix
 " let &colorcolumn="80,".join(range(121,999),",") " Set an 80 column border for good coding style
@@ -146,6 +148,15 @@ augroup remember_folds
   autocmd!
   autocmd BufWinLeave ?* mkview
   autocmd BufWinEnter ?* silent! loadview
+augroup end
+" CoC highlight symbol and refs when holding the cursor
+autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
