@@ -32,6 +32,11 @@ map <leader>n :NERDTreeToggle<CR>
 map <leader>nf :NERDTreeFocus<CR>
 " Tagbar
 map <leader>ta :TagbarToggle<CR>
+" Saving
+map <leader>s  :update<CR>
+map <leader>S :wa<CR>
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -81,19 +86,6 @@ nnoremap <leader>bg :ls<CR>:buffer<space>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" => Folding
-nnoremap <leader>ft :call FoldColumnToggle()<CR>
-function! FoldColumnToggle()
-    if &foldcolumn
-        setlocal foldcolumn=0
-    else
-        setlocal foldcolumn=4
-    endif
-endfunction
-nnoremap <leader>f zfip
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " => CoC
 " Symbol renaming
 nmap <leader>rn <Plug>(coc-rename)
@@ -106,9 +98,10 @@ xmap <leader>a <Plug>(coc-codeaction-selected)
 nmap <leader>a <Plug>(coc-codeaction-selected)
 " Remap keys for appying codeAction to the current buffer
 nmap <leader>ac <Plug>(coc-codeaction)
+nmap <leader>al <Plug>(coc-codeaction-line)
 " Apply AutoFix to problem on the current line
 nmap <leader>qf <Plug>(coc-fix-current)
-" Map function and" Map function and class text objects
+" Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
 xmap if <Plug>(coc-funcobj-i)
 omap if <Plug>(coc-funcobj-i)
@@ -134,7 +127,8 @@ command! -nargs=0 Format :call CocAction('format')
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OR   :call     CocAction('runCommand', 'edito" Mappings for CoCList
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+" Mappings for CoCList
 " Show all diagnostics.
 nnoremap <silent><nowait> <localleader>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
@@ -151,3 +145,12 @@ nnoremap <silent><nowait> <localleader>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <localleader>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <localleader>p  :<C-u>CocListResume<CR>r.action.organizeImport')
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" => FzF
+nmap <leader><tab> <Plug>(fzf-maps-n)
+xmap <leader><tab> <Plug>(fzf-maps-x)
+omap <leader><tab> <Plug>(fzf-maps-o)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

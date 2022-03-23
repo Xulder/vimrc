@@ -141,14 +141,6 @@ autocmd BufRead,BufNewFile Xresources,Xdefaults,xresources,xdefaults set filetyp
 autocmd BufWritePost Xresources,Xdefaults,xresources,xdefaults !xrdb %
 " Prevent automatic comment continuation because it's annoying as fuck
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
-" Disable autopairs by default because it can be fucking obnoxious
-autocmd VimEnter,BufWinEnter * silent! call AutoPairsToggle()
-" Saves folds
-augroup remember_folds
-  autocmd!
-  autocmd BufWinLeave ?* mkview
-  autocmd BufWinEnter ?* silent! loadview
-augroup end
 " CoC highlight symbol and refs when holding the cursor
 autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup mygroup

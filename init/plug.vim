@@ -12,10 +12,12 @@ endif
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 
 " => Wiki/Prose
+Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 Plug 'vimwiki/vimwiki'
 Plug 'junegunn/goyo.vim'
 
 " => Appearance
+Plug 'glepnir/dashboard/nvim'
 Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -44,12 +46,22 @@ Plug 'tpope/vim-commentary'
 Plug 'junegunn/vim-easy-align'
 Plug 'justinmk/vim-sneak'
 Plug 'jiangmiao/auto-pairs'
-
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'jeetsukumaran/vim-indentwise'
+'
 " => Autocompletion, linting, syntax, and code snippits
+Plug 'preservim/vim-markdown'
 Plug 'ap/vim-css-color'
-Plug 'vim-syntastic/syntastic'
-Plug 'sheerun/vim-polyglot'
-Plug 'dense-analysis/ale'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'vim-syntastic/syntastic'
+" Plug 'sheerun/vim-polyglot'
+Plug 'rust-lang/rust.vim'
+Plug 'adamclerk/vim-razor'
+Plug 'tikhomirov/vim-glsl'
+Plug 'oranget/vim-csharp'
+Plug 'neovimhaskell/haskell-vim'
+Plug 'elixir-editors/vim-elixir'
+" Plug 'dense-analysis/ale'
+Plug 'kburdett/vim-nuuid'
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install() }}
 
 call plug#end()
